@@ -1,4 +1,4 @@
-classdef Deck
+classdef Deck < handle
     %DECK creates and shuffles the deck of cards for uno
     %requires the class Card to function
     %NOTE:
@@ -18,37 +18,31 @@ classdef Deck
         function obj = Deck()
             %Creates the array of cards deckArray and shuffles it.
             %
-            %The 2 for loops serve to put the correct cards in the deck for
+            %The for loop serves to put the correct cards in the deck for
             %a game of uno.
             %
-            %Remember that Card(i) creates a card. i corresponds to the
+            %Remember that Card(i) creates a card. The value of i corresponds to the
             %type of card that is created.
 
             obj.topCard = 1;
-            
-            for i = 0:53
-                deckArray(i+1) = Card(i);
-            end
-            j = 0;
-            for i = [1:12, 14:25, 27:38, 40:53, 52:53, 52:53]
-                deckArray(55 + j) = Card(i);
+            j = 1;
+            for i = [0:53, 1:12, 14:25, 27:38, 40:53, 52:53, 52:53]
+                deckArray(j) = Card(i);
                 j = j + 1;
             end
+
             %shuffle the deck using randperm
             obj.deckArray = deckArray(randperm(length(deckArray)));
             
         end
 
-        function [pulledCard, obj] = pullCard(obj)
-            %YOU MUST ALWAYS HAVE THE DECK OBJECT AS AN OUTPUT
-            %   When calling this function you will have 2 outputs, the
-            %   pulled card and the Deck object. In order to incriment the
-            %   value of obj.topCard, we must reassign this value every
-            %   time we call the method
-
+        function pulledCard = pullCard(obj)
+            %Calling this function returns a Card class object. 
+            %No inputs/arguments are required
+           
             %get the top card from deckArray
             pulledCard = obj.deckArray(obj.topCard);
-            
+
             %if topCard greater than 108, set to one, otherwise incriment
             %by 1
             if obj.topCard >= 108
