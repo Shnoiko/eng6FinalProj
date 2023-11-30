@@ -6,7 +6,7 @@ classdef Player < handle
 
     properties
         playerHand; %The array of cards a player currently has
-        playerCount; %The length of the players hand, to be passed
+        playerHandLength; %The length of the players hand, to be passed
         playerNumber; %Number of the player for reference
    
 
@@ -14,8 +14,7 @@ classdef Player < handle
 
     methods
        
-        function [obj] = Player()
-           mydeck = Deck();
+        function [obj] = Player(deck)
             % This function will create a player with the listed proporties
             % above
             %It will then create a hand with 7 random cards
@@ -23,10 +22,10 @@ classdef Player < handle
             initialhand =  Card.empty(0, 7);
             %For loop assigns a card to each spot in the player hand
             for i = 1:7
-                initialhand(i) = mydeck.pullCard();
+                initialhand(i) = deck.pullCard();
             end
            obj.playerHand = initialhand;
-           obj.playerCount = 7;
+           obj.playerHandLength = 7;
         end
 
         function [newArray] = addCard(obj, deck)
@@ -55,8 +54,8 @@ classdef Player < handle
         function [newlength] = givelength(obj)
             % This function will return the length of players hand
             %No input necessary
-            obj.playerCount = length(obj.playerHand);
-            newlength = obj.playerCount;
+            obj.playerHandLength = length(obj.playerHand);
+            newlength = obj.playerHandLength;
         end
     end
 end
