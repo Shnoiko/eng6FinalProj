@@ -23,8 +23,9 @@ classdef Deck < handle
             %
             %Remember that Card(i) creates a card. The value of i corresponds to the
             %type of card that is created.
-
+            
             obj.topCard = 1;
+            deckArray = Card.empty(0, 108);
             j = 1;
             for i = [0:53, 1:12, 14:25, 27:38, 40:53, 52:53, 52:53]
                 deckArray(j) = Card(i);
