@@ -62,7 +62,7 @@ classdef Card
                     obj.color = 'wild';
                     obj.number = encodedCardNumber - 52;
                 end
-                obj.imageSource = "UnoCards/" + string(obj.color) + string(obj.number) + ".png";
+                obj.imageSource = char("/UnoCards/" + string(obj.color) + string(obj.number) + ".png");
             end
             
         end
