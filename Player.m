@@ -28,7 +28,7 @@ classdef Player < handle
            obj.playerHandLength = 7;
         end
 
-        function [newArray] = addCard(obj, deck)
+        function [] = addCard(obj, deck)
             
             % Function to add a card to the array
             % When calling this function dont need to provide any inputs
@@ -36,7 +36,7 @@ classdef Player < handle
 
             obj.playerHand(end + 1) = deck.pullCard();
 
-            newArray = obj.playerHand;
+            
             
         
         end
